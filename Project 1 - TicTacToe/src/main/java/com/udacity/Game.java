@@ -150,7 +150,57 @@ public class Game {
      */
     public String checkGameWinner(char [][]grid){
         String result = "None";
-        //Student code goes here ...
+
+        // Search for a winner
+        if(grid[0][0] == 'x' && grid[0][1] == 'x' && grid[0][2] == 'x') //first row 'X'
+            result = "X wins";
+        else if(grid[1][0] == 'x' && grid[1][1] == 'x' && grid[1][2] == 'x') //second row 'X'
+            result = "X wins";
+        else if(grid[2][0] == 'x' && grid[2][1] == 'x' && grid[2][2] == 'x') //third row 'X'
+            result = "X wins";
+        else if(grid[0][0] == 'x' && grid[1][0] == 'x' && grid[2][0] == 'x') //first column 'X'
+            result = "X wins";
+        else if(grid[0][1] == 'x' && grid[1][1] == 'x' && grid[2][1] == 'x') //second column 'X'
+            result = "X wins";
+        else if(grid[0][2] == 'x' && grid[1][2] == 'x' && grid[2][2] == 'x') //third column 'X'
+            result = "X wins";
+        else if(grid[0][0] == 'x' && grid[1][1] == 'x' && grid[2][2] == 'x') // diagonal \ 'X'
+            result = "X wins";
+        else if(grid[0][2] == 'x' && grid[1][1] == 'x' && grid[2][0] == 'x') // diagonal / 'X'
+            result = "X wins";
+        else if(grid[0][0] == 'o' && grid[0][1] == 'o' && grid[0][2] == 'o') //first row 'O'
+            result = "O wins";
+        else if(grid[1][0] == 'o' && grid[1][1] == 'o' && grid[1][2] == 'o') //second row 'O'
+            result = "O wins";
+        else if(grid[2][0] == 'o' && grid[2][1] == 'o' && grid[2][2] == 'o') //third row 'O'
+            result = "O wins";
+        else if(grid[0][0] == 'o' && grid[1][0] == 'o' && grid[2][0] == 'o') //first column 'O'
+            result = "O wins";
+        else if(grid[0][1] == 'o' && grid[1][1] == 'o' && grid[2][1] == 'o') //second column 'O'
+            result = "O wins";
+        else if(grid[0][2] == 'o' && grid[1][2] == 'o' && grid[2][2] == 'o') //third column 'O'
+            result = "O wins";
+        else if(grid[0][0] == 'o' && grid[1][1] == 'o' && grid[2][2] == 'o') // diagonal \ 'O'
+            result = "O wins";
+        else if(grid[0][2] == 'o' && grid[1][1] == 'o' && grid[2][0] == 'o') // diagonal / 'O'
+            result = "O wins";
+
+        // Search for "Tie". Nobody has win already
+        if (result == "None") {
+            boolean tie = true;
+            for(int i=0; i<3; i++) {
+                for(int j=0; j<3; j++) {
+                    if(grid[i][j] == '-') {
+                        tie = false;
+                        break;
+                    }
+                }
+            }
+            if(tie) {
+                result = "Tie";
+            }
+        }
+
         return result;
     }
 
